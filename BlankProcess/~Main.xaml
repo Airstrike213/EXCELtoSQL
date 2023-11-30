@@ -111,6 +111,7 @@
       <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
       <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>GlobalVariablesT1PNoYwrqg</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <sap:WorkflowViewStateService.ViewState>
@@ -352,7 +353,7 @@
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <av:Point x:Key="ShapeLocation">490,569.5</av:Point>
                                             <av:Size x:Key="ShapeSize">200,81</av:Size>
-                                            <av:PointCollection x:Key="ConnectorLocation">590,650.5 590,714</av:PointCollection>
+                                            <av:PointCollection x:Key="ConnectorLocation">590,650.5 590,696.5</av:PointCollection>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
                                         <Sequence sap:VirtualizedContainerService.HintSize="200,81" sap2010:WorkflowViewState.IdRef="Sequence_27">
@@ -401,22 +402,38 @@
                                           </ui:MultipleAssign>
                                         </Sequence>
                                         <FlowStep.Next>
-                                          <FlowStep x:Name="__ReferenceID12">
+                                          <FlowDecision x:Name="__ReferenceID12" DisplayName="&gt;15 Header" sap:VirtualizedContainerService.HintSize="70,87" sap2010:WorkflowViewState.IdRef="FlowDecision_6">
+                                            <FlowDecision.Condition>
+                                              <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="arr_str_HeaderDT.length &gt; 15" />
+                                            </FlowDecision.Condition>
                                             <sap:WorkflowViewStateService.ViewState>
                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                <av:Point x:Key="ShapeLocation">490,714</av:Point>
-                                                <av:Size x:Key="ShapeSize">200,52</av:Size>
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                <av:Point x:Key="ShapeLocation">555,696.5</av:Point>
+                                                <av:Size x:Key="ShapeSize">70,87</av:Size>
+                                                <av:PointCollection x:Key="TrueConnector">555,740 450,740</av:PointCollection>
                                               </scg:Dictionary>
                                             </sap:WorkflowViewStateService.ViewState>
-                                            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="MessageBox_15" Text="[arr_str_HeaderDT.length]">
-                                              <sap:WorkflowViewStateService.ViewState>
-                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                </scg:Dictionary>
-                                              </sap:WorkflowViewStateService.ViewState>
-                                            </ui:MessageBox>
-                                          </FlowStep>
+                                            <FlowDecision.True>
+                                              <FlowStep x:Name="__ReferenceID13">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <av:Point x:Key="ShapeLocation">250,714</av:Point>
+                                                    <av:Size x:Key="ShapeSize">200,52</av:Size>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                                <TerminateWorkflow DisplayName="Terminate Workflow" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_4" Reason="Zu viele Header. Bitte begrenze die Anzahl deiner Header auf 15 und versuche es erneut.">
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                </TerminateWorkflow>
+                                              </FlowStep>
+                                            </FlowDecision.True>
+                                          </FlowDecision>
                                         </FlowStep.Next>
                                       </FlowStep>
                                     </FlowDecision.False>
@@ -477,6 +494,7 @@
       <x:Reference>__ReferenceID10</x:Reference>
       <x:Reference>__ReferenceID11</x:Reference>
       <x:Reference>__ReferenceID12</x:Reference>
+      <x:Reference>__ReferenceID13</x:Reference>
     </Flowchart>
     <TerminateWorkflow DisplayName="Terminate Workflow" sap:VirtualizedContainerService.HintSize="1181,90" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_3" Reason="Ende Flowchart" />
     <ui:MessageBox Caption="{x:Null}" AutoCloseAfter="00:01:00" Buttons="YesNo" ChosenButton="[str_button]" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="1181,85" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[&quot;Möchtest du einen eigenen Dateipfad angeben?&quot;]" />
