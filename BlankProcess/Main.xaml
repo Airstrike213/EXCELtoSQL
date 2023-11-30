@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1233,5236" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:si="clr-namespace:System.IO;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1233,5443" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:si="clr-namespace:System.IO;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -119,12 +119,12 @@
       <x:Boolean x:Key="ShouldCollapseAll">False</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap:VirtualizedContainerService.HintSize="1243,5171" sap2010:WorkflowViewState.IdRef="Sequence_5">
+  <Sequence sap:VirtualizedContainerService.HintSize="1243,5378" sap2010:WorkflowViewState.IdRef="Sequence_5">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="data" />
       <Variable x:TypeArguments="sd:DataTable" Name="VarDatatableOP" />
       <Variable x:TypeArguments="x:String" Name="str_ExcelPath" />
-      <Variable x:TypeArguments="sd:DataTable" Name="dt_Zutat" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_sheetHeaderName" />
       <Variable x:TypeArguments="x:Int32" Name="int_header02" />
       <Variable x:TypeArguments="x:Int32" Name="int_header01" />
       <Variable x:TypeArguments="x:Int32" Name="int_header03" />
@@ -152,13 +152,14 @@
       <Variable x:TypeArguments="x:Int32" Name="int_header13" />
       <Variable x:TypeArguments="x:Int32" Name="int_header15" />
       <Variable x:TypeArguments="x:Int32" Name="int_header14" />
+      <Variable x:TypeArguments="x:Int32" Name="int_countHeaderIndex" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Flowchart DisplayName="EXCEL_to_SQL" sap:VirtualizedContainerService.HintSize="1181,1212" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <Flowchart DisplayName="EXCEL_to_SQL" sap:VirtualizedContainerService.HintSize="1122,1208" sap2010:WorkflowViewState.IdRef="Flowchart_1">
       <Flowchart.Variables>
         <Variable x:TypeArguments="x:String" Name="str_tablePath" />
         <Variable x:TypeArguments="x:Int32" Name="int_count" />
@@ -168,11 +169,11 @@
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          <av:Point x:Key="ShapeLocation">0,12.5</av:Point>
+          <av:Point x:Key="ShapeLocation">0,2.5</av:Point>
           <av:Size x:Key="ShapeSize">60,75</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">60,50 252.5,50 252.5,96.5</av:PointCollection>
-          <x:Double x:Key="Width">1147</x:Double>
-          <x:Double x:Key="Height">1175</x:Double>
+          <av:PointCollection x:Key="ConnectorLocation">60,40 252.5,40 252.5,96.5</av:PointCollection>
+          <x:Double x:Key="Width">1087.692234668692</x:Double>
+          <x:Double x:Key="Height">1171.206316055946</x:Double>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <Flowchart.StartNode>
@@ -196,7 +197,7 @@
                 <av:Size x:Key="ShapeSize">200,52</av:Size>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <TerminateWorkflow DisplayName="Terminate Workflow" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_1" Reason="Zu viele Fehlversuche. Der Bot wird geschlossen.">
+            <TerminateWorkflow DisplayName="Fehler: 5 Fehlversuche" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_1" Reason="Zu viele Fehlversuche. Der Bot wird geschlossen.">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -235,10 +236,10 @@
                 </sap:WorkflowViewStateService.ViewState>
                 <TryCatch DisplayName="Fehler bei der Eingabe?" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="TryCatch_1">
                   <TryCatch.Try>
-                    <ui:FileExistsX DisplayName="File Exists" Exists="[bool_dateiPfad]" sap:VirtualizedContainerService.HintSize="334,133" sap2010:WorkflowViewState.IdRef="FileExistsX_1" Path="[str_ExcelPath]" />
+                    <ui:FileExistsX DisplayName="File Exists" Exists="[bool_dateiPfad]" sap:VirtualizedContainerService.HintSize="334,135" sap2010:WorkflowViewState.IdRef="FileExistsX_1" Path="[str_ExcelPath]" />
                   </TryCatch.Try>
                   <TryCatch.Catches>
-                    <Catch x:TypeArguments="s:InvalidCastException" sap:VirtualizedContainerService.HintSize="456,265" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                    <Catch x:TypeArguments="s:InvalidCastException" sap:VirtualizedContainerService.HintSize="456,267" sap2010:WorkflowViewState.IdRef="Catch`1_1">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -249,13 +250,13 @@
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="s:InvalidCastException" Name="exception" />
                         </ActivityAction.Argument>
-                        <Sequence sap:VirtualizedContainerService.HintSize="450,196" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                        <Sequence sap:VirtualizedContainerService.HintSize="450,197" sap2010:WorkflowViewState.IdRef="Sequence_16">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="388,85" sap2010:WorkflowViewState.IdRef="MessageBox_6" Text="[&quot;Fehler: Ungültige Eingabe. Bitte gib einen Dateipfad an.&quot;]" />
+                          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="388,86" sap2010:WorkflowViewState.IdRef="MessageBox_6" Text="[&quot;Fehler: Ungültige Eingabe. Bitte gib einen Dateipfad an.&quot;]" />
                         </Sequence>
                       </ActivityAction>
                     </Catch>
@@ -280,7 +281,7 @@
                             <av:Size x:Key="ShapeSize">200,52</av:Size>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <TerminateWorkflow DisplayName="Input = 0" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_2" Reason="Keine Eingabe. Der Bot schließt sich." />
+                        <TerminateWorkflow DisplayName="Fehler: Input = NULL" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_2" Reason="Keine Eingabe. Der Bot schließt sich." />
                       </FlowStep>
                     </FlowDecision.True>
                     <FlowDecision.False>
@@ -305,7 +306,7 @@
                             </sap:WorkflowViewStateService.ViewState>
                             <TryCatch DisplayName="Falls keine Tabelle" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="TryCatch_5">
                               <TryCatch.Try>
-                                <Sequence sap:VirtualizedContainerService.HintSize="546,689" sap2010:WorkflowViewState.IdRef="Sequence_34">
+                                <Sequence sap:VirtualizedContainerService.HintSize="546,694" sap2010:WorkflowViewState.IdRef="Sequence_34">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -341,7 +342,7 @@
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
                                   </ui:ExcelApplicationScope>
-                                  <ui:InputDialog Options="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="484,292" sap2010:WorkflowViewState.IdRef="InputDialog_13" IsPassword="False" Label="Möchtest du diesen Sheet benutzen?" OptionsString="[String.Join(&quot;; &quot;,list_sheets)]" Title="Auswahl Sheet">
+                                  <ui:InputDialog Options="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="484,297" sap2010:WorkflowViewState.IdRef="InputDialog_13" IsPassword="False" Label="Wähle deine Liste:" OptionsString="[String.Join(&quot;; &quot;,list_sheets)]" Title="Auswahl Liste">
                                     <ui:InputDialog.Result>
                                       <OutArgument x:TypeArguments="x:String">[str_SheetName]</OutArgument>
                                     </ui:InputDialog.Result>
@@ -349,7 +350,7 @@
                                 </Sequence>
                               </TryCatch.Try>
                               <TryCatch.Catches>
-                                <Catch x:TypeArguments="s:ArgumentException" sap:VirtualizedContainerService.HintSize="550,159" sap2010:WorkflowViewState.IdRef="Catch`1_6">
+                                <Catch x:TypeArguments="s:ArgumentException" sap:VirtualizedContainerService.HintSize="550,161" sap2010:WorkflowViewState.IdRef="Catch`1_6">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -360,7 +361,7 @@
                                     <ActivityAction.Argument>
                                       <DelegateInArgument x:TypeArguments="s:ArgumentException" Name="exception" />
                                     </ActivityAction.Argument>
-                                    <TerminateWorkflow DisplayName="Terminate Workflow" sap:VirtualizedContainerService.HintSize="334,90" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_10" Reason="Die ausgewählte Datei ist nicht auszulesen. Bitte hänge eine Datei mit einem der folgenden Endungen an: .xlsx, .xlsm, .xltx, .xltm." />
+                                    <TerminateWorkflow DisplayName="Terminate Workflow" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_10" Reason="Die ausgewählte Datei ist nicht auszulesen. Bitte hänge eine Datei mit einem der folgenden Endungen an: .xlsx, .xlsm, .xltx, .xltm." />
                                   </ActivityAction>
                                 </Catch>
                               </TryCatch.Catches>
@@ -386,14 +387,14 @@
                                         <av:PointCollection x:Key="ConnectorLocation">600,670.5 600,706.5</av:PointCollection>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                    <Sequence sap:VirtualizedContainerService.HintSize="641,1158" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                                    <Sequence DisplayName="Fehler: Öffnen der Tabelle" sap:VirtualizedContainerService.HintSize="200,81" sap2010:WorkflowViewState.IdRef="Sequence_27">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <TryCatch DisplayName="Doppelte Header?" sap:VirtualizedContainerService.HintSize="579,1047" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+                                      <TryCatch DisplayName="Doppelte Header?" sap:VirtualizedContainerService.HintSize="579,1056" sap2010:WorkflowViewState.IdRef="TryCatch_3">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -401,20 +402,20 @@
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
                                         <TryCatch.Try>
-                                          <Sequence sap:VirtualizedContainerService.HintSize="541,417" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                                          <Sequence sap:VirtualizedContainerService.HintSize="541,418" sap2010:WorkflowViewState.IdRef="Sequence_28">
                                             <sap:WorkflowViewStateService.ViewState>
                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                               </scg:Dictionary>
                                             </sap:WorkflowViewStateService.ViewState>
-                                            <ui:ReadRange AddHeaders="True" DataTable="[dt_Zutat]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="479,88" sap2010:WorkflowViewState.IdRef="ReadRange_4" SheetName="[str_SheetName]" WorkbookPath="[str_ExcelPath]">
+                                            <ui:ReadRange AddHeaders="True" DataTable="[dt_sheetHeaderName]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="479,88" sap2010:WorkflowViewState.IdRef="ReadRange_4" SheetName="[str_SheetName]" WorkbookPath="[str_ExcelPath]">
                                               <ui:ReadRange.Range>
                                                 <InArgument x:TypeArguments="x:String">
                                                   <Literal x:TypeArguments="x:String" Value="" />
                                                 </InArgument>
                                               </ui:ReadRange.Range>
                                             </ui:ReadRange>
-                                            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,178" sap2010:WorkflowViewState.IdRef="MultipleAssign_6">
+                                            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,179" sap2010:WorkflowViewState.IdRef="MultipleAssign_6">
                                               <ui:MultipleAssign.AssignOperations>
                                                 <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                                                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_25">
@@ -422,7 +423,7 @@
                                                       <OutArgument x:TypeArguments="s:String[]">[arr_str_HeaderDT]</OutArgument>
                                                     </ui:AssignOperation.To>
                                                     <ui:AssignOperation.Value>
-                                                      <InArgument x:TypeArguments="s:String[]">[dt_Zutat.Columns.Cast(Of DataColumn).Select(Function(x)x.ColumnName).ToArray]</InArgument>
+                                                      <InArgument x:TypeArguments="s:String[]">[dt_sheetHeaderName.Columns.Cast(Of DataColumn).Select(Function(x)x.ColumnName).ToArray]</InArgument>
                                                     </ui:AssignOperation.Value>
                                                   </ui:AssignOperation>
                                                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_26">
@@ -447,7 +448,7 @@
                                           </Sequence>
                                         </TryCatch.Try>
                                         <TryCatch.Catches>
-                                          <Catch x:TypeArguments="sd:DuplicateNameException" sap:VirtualizedContainerService.HintSize="545,159" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+                                          <Catch x:TypeArguments="sd:DuplicateNameException" sap:VirtualizedContainerService.HintSize="545,161" sap2010:WorkflowViewState.IdRef="Catch`1_2">
                                             <sap:WorkflowViewStateService.ViewState>
                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -458,10 +459,10 @@
                                               <ActivityAction.Argument>
                                                 <DelegateInArgument x:TypeArguments="sd:DuplicateNameException" Name="exception" />
                                               </ActivityAction.Argument>
-                                              <TerminateWorkflow DisplayName="Terminate Workflow" sap:VirtualizedContainerService.HintSize="334,90" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_5" Reason="Du hast doppelte Header in deiner Tabelle. Bitte gib jedem Header einen individuellen Namen und versuche es erneut." />
+                                              <TerminateWorkflow DisplayName="Terminate Workflow" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_5" Reason="Du hast doppelte Header in deiner Tabelle. Bitte gib jedem Header einen individuellen Namen und versuche es erneut." />
                                             </ActivityAction>
                                           </Catch>
-                                          <Catch x:TypeArguments="si:IOException" sap:VirtualizedContainerService.HintSize="545,159" sap2010:WorkflowViewState.IdRef="Catch`1_7">
+                                          <Catch x:TypeArguments="si:IOException" sap:VirtualizedContainerService.HintSize="545,161" sap2010:WorkflowViewState.IdRef="Catch`1_7">
                                             <sap:WorkflowViewStateService.ViewState>
                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -472,7 +473,7 @@
                                               <ActivityAction.Argument>
                                                 <DelegateInArgument x:TypeArguments="si:IOException" Name="exception" />
                                               </ActivityAction.Argument>
-                                              <TerminateWorkflow DisplayName="Terminate Workflow" sap:VirtualizedContainerService.HintSize="334,90" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_11" Reason="Die auszulesende Tabelle ist noch geöffnet. Schließe sie und starte das Programm erneut." />
+                                              <TerminateWorkflow DisplayName="Terminate Workflow" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_11" Reason="Die auszulesende Tabelle ist noch geöffnet. Schließe sie und starte das Programm erneut." />
                                             </ActivityAction>
                                           </Catch>
                                         </TryCatch.Catches>
@@ -487,6 +488,7 @@
                                             <av:Point x:Key="ShapeLocation">565,706.5</av:Point>
                                             <av:Size x:Key="ShapeSize">70,87</av:Size>
                                             <av:PointCollection x:Key="TrueConnector">565,750 520,750</av:PointCollection>
+                                            <av:PointCollection x:Key="FalseConnector">635,750 680,750</av:PointCollection>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
                                         <FlowDecision.True>
@@ -507,6 +509,92 @@
                                             </TerminateWorkflow>
                                           </FlowStep>
                                         </FlowDecision.True>
+                                        <FlowDecision.False>
+                                          <FlowStep x:Name="__ReferenceID13">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <av:Point x:Key="ShapeLocation">680,724</av:Point>
+                                                <av:Size x:Key="ShapeSize">200,52</av:Size>
+                                                <av:PointCollection x:Key="ConnectorLocation">780,776 780,824</av:PointCollection>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" Condition="[arr_str_HeaderDT.Length &gt;= int_countHeaderIndex]" DisplayName="Header als Int speichern" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="ForEach`1_8" Values="[arr_str_HeaderDT]">
+                                              <ui:ForEach.Body>
+                                                <ActivityAction x:TypeArguments="x:String">
+                                                  <ActivityAction.Argument>
+                                                    <DelegateInArgument x:TypeArguments="x:String" Name="currentItem" />
+                                                  </ActivityAction.Argument>
+                                                  <Sequence DisplayName="Hauptteil" sap:VirtualizedContainerService.HintSize="476,170" sap2010:WorkflowViewState.IdRef="Sequence_46">
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                      </scg:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                    <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_14">
+                                                      <Assign.To>
+                                                        <OutArgument x:TypeArguments="x:Int32">[int_countHeaderIndex]</OutArgument>
+                                                      </Assign.To>
+                                                      <Assign.Value>
+                                                        <InArgument x:TypeArguments="x:Int32">[int_countHeaderIndex + 1]</InArgument>
+                                                      </Assign.Value>
+                                                    </Assign>
+                                                  </Sequence>
+                                                </ActivityAction>
+                                              </ui:ForEach.Body>
+                                            </ui:ForEach>
+                                            <FlowStep.Next>
+                                              <FlowStep x:Name="__ReferenceID14">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <av:Point x:Key="ShapeLocation">680,824</av:Point>
+                                                    <av:Size x:Key="ShapeSize">200,52</av:Size>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                                <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="ForEach`1_9">
+                                                  <ui:ForEach.Body>
+                                                    <ActivityAction x:TypeArguments="x:Object">
+                                                      <ActivityAction.Argument>
+                                                        <DelegateInArgument x:TypeArguments="x:Object" Name="currentItem" />
+                                                      </ActivityAction.Argument>
+                                                      <Sequence DisplayName="Hauptteil" sap:VirtualizedContainerService.HintSize="376,430" sap2010:WorkflowViewState.IdRef="Sequence_49">
+                                                        <sap:WorkflowViewStateService.ViewState>
+                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                          </scg:Dictionary>
+                                                        </sap:WorkflowViewStateService.ViewState>
+                                                        <If sap:VirtualizedContainerService.HintSize="334,342" sap2010:WorkflowViewState.IdRef="If_3">
+                                                          <If.Then>
+                                                            <Sequence sap:VirtualizedContainerService.HintSize="300,80" sap2010:WorkflowViewState.IdRef="Sequence_47">
+                                                              <sap:WorkflowViewStateService.ViewState>
+                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                </scg:Dictionary>
+                                                              </sap:WorkflowViewStateService.ViewState>
+                                                            </Sequence>
+                                                          </If.Then>
+                                                          <If.Else>
+                                                            <Sequence sap:VirtualizedContainerService.HintSize="300,80" sap2010:WorkflowViewState.IdRef="Sequence_48">
+                                                              <sap:WorkflowViewStateService.ViewState>
+                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                </scg:Dictionary>
+                                                              </sap:WorkflowViewStateService.ViewState>
+                                                            </Sequence>
+                                                          </If.Else>
+                                                        </If>
+                                                      </Sequence>
+                                                    </ActivityAction>
+                                                  </ui:ForEach.Body>
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                </ui:ForEach>
+                                              </FlowStep>
+                                            </FlowStep.Next>
+                                          </FlowStep>
+                                        </FlowDecision.False>
                                       </FlowDecision>
                                     </FlowStep.Next>
                                   </FlowStep>
@@ -566,18 +654,20 @@
       <x:Reference>__ReferenceID10</x:Reference>
       <x:Reference>__ReferenceID11</x:Reference>
       <x:Reference>__ReferenceID12</x:Reference>
+      <x:Reference>__ReferenceID13</x:Reference>
+      <x:Reference>__ReferenceID14</x:Reference>
     </Flowchart>
     <TerminateWorkflow DisplayName="Terminate Workflow" sap:VirtualizedContainerService.HintSize="1181,90" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_3" Reason="Ende Flowchart" />
-    <ui:MessageBox Caption="{x:Null}" AutoCloseAfter="00:01:00" Buttons="YesNo" ChosenButton="[str_button]" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="1181,85" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[&quot;Möchtest du einen eigenen Dateipfad angeben?&quot;]" />
-    <If Condition="[str_button=&quot;Yes&quot;]" sap:VirtualizedContainerService.HintSize="1181,713" sap2010:WorkflowViewState.IdRef="If_2">
+    <ui:MessageBox Caption="{x:Null}" AutoCloseAfter="00:01:00" Buttons="YesNo" ChosenButton="[str_button]" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="1181,86" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[&quot;Möchtest du einen eigenen Dateipfad angeben?&quot;]" />
+    <If Condition="[str_button=&quot;Yes&quot;]" sap:VirtualizedContainerService.HintSize="1181,719" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="376,327" sap2010:WorkflowViewState.IdRef="Sequence_12">
+        <Sequence sap:VirtualizedContainerService.HintSize="376,331" sap2010:WorkflowViewState.IdRef="Sequence_12">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="334,239" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Hier dein Dateipfad" Title="Dateipfad">
+          <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="334,243" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Hier dein Dateipfad" Title="Dateipfad">
             <ui:InputDialog.Result>
               <OutArgument x:TypeArguments="x:String">[str_ExcelPath]</OutArgument>
             </ui:InputDialog.Result>
@@ -585,13 +675,13 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="521,204" sap2010:WorkflowViewState.IdRef="Sequence_13">
+        <Sequence sap:VirtualizedContainerService.HintSize="521,205" sap2010:WorkflowViewState.IdRef="Sequence_13">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,116" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+          <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,117" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
             <ui:MultipleAssign.AssignOperations>
               <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                 <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -608,19 +698,19 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="1181,239" sap2010:WorkflowViewState.IdRef="InputDialog_2" IsPassword="False" Label="Here your Sheet Name" Title="Sheet Name">
+    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="1181,243" sap2010:WorkflowViewState.IdRef="InputDialog_2" IsPassword="False" Label="Here your Sheet Name" Title="Sheet Name">
       <ui:InputDialog.Result>
         <OutArgument x:TypeArguments="x:String">[str_SheetName]</OutArgument>
       </ui:InputDialog.Result>
     </ui:InputDialog>
-    <ui:ReadRange AddHeaders="True" DataTable="[dt_Zutat]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="1181,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="[str_SheetName]" WorkbookPath="[str_ExcelPath]">
+    <ui:ReadRange AddHeaders="True" DataTable="[dt_sheetHeaderName]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="1181,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="[str_SheetName]" WorkbookPath="[str_ExcelPath]">
       <ui:ReadRange.Range>
         <InArgument x:TypeArguments="x:String">
           <Literal x:TypeArguments="x:String" Value="" />
         </InArgument>
       </ui:ReadRange.Range>
     </ui:ReadRange>
-    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="1181,178" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="1181,179" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_16">
@@ -628,7 +718,7 @@
               <OutArgument x:TypeArguments="s:String[]">[arr_str_HeaderDT]</OutArgument>
             </ui:AssignOperation.To>
             <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="s:String[]">[dt_Zutat.Columns.Cast(Of DataColumn).Select(Function(x)x.ColumnName).ToArray]</InArgument>
+              <InArgument x:TypeArguments="s:String[]">[dt_sheetHeaderName.Columns.Cast(Of DataColumn).Select(Function(x)x.ColumnName).ToArray]</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_17">
@@ -650,15 +740,15 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1181,502" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1181,503" sap2010:WorkflowViewState.IdRef="CommentOut_1">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="472,423" sap2010:WorkflowViewState.IdRef="Sequence_10">
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="472,424" sap2010:WorkflowViewState.IdRef="Sequence_10">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[Not String.IsNullOrEmpty(cellValue.ToString())]" DisplayName="While" sap:VirtualizedContainerService.HintSize="410,312" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+          <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[Not String.IsNullOrEmpty(cellValue.ToString())]" DisplayName="While" sap:VirtualizedContainerService.HintSize="410,313" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
             <ui:InterruptibleWhile.Body>
               <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,176" sap2010:WorkflowViewState.IdRef="Sequence_9">
                 <sap:WorkflowViewStateService.ViewState>
@@ -677,180 +767,191 @@
         </Sequence>
       </ui:CommentOut.Body>
     </ui:CommentOut>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_Zutat]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="1181,1633" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
-      <ui:ForEachRow.Body>
-        <ActivityAction x:TypeArguments="sd:DataRow">
-          <ActivityAction.Argument>
-            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="Row" />
-          </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="619,1447" sap2010:WorkflowViewState.IdRef="Sequence_8">
-            <Sequence.Variables>
-              <Variable x:TypeArguments="x:String" Name="data_row" />
-            </Sequence.Variables>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <Assign sap:VirtualizedContainerService.HintSize="577,82" sap2010:WorkflowViewState.IdRef="Assign_8">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:String">[data_row]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:String">[String.Join(", ",arr_str_HeaderDT)]</InArgument>
-              </Assign.Value>
-            </Assign>
-            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="577,740" sap2010:WorkflowViewState.IdRef="CommentOut_3">
-              <ui:CommentOut.Body>
-                <Sequence DisplayName="Ignorierte Aktivitäten" sap:VirtualizedContainerService.HintSize="541,661" sap2010:WorkflowViewState.IdRef="Sequence_25">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1181,1831" sap2010:WorkflowViewState.IdRef="CommentOut_5">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignorierte Aktivitäten" sap:VirtualizedContainerService.HintSize="715,1752" sap2010:WorkflowViewState.IdRef="Sequence_40">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_sheetHeaderName]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="653,1641" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
+            <ui:ForEachRow.Body>
+              <ActivityAction x:TypeArguments="sd:DataRow">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="sd:DataRow" Name="Row" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="619,1453" sap2010:WorkflowViewState.IdRef="Sequence_38">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="x:String" Name="data_row" />
+                  </Sequence.Variables>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,550" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
-                    <ui:MultipleAssign.AssignOperations>
-                      <scg:List x:TypeArguments="ui:AssignOperation" Capacity="16">
-                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
-                          <ui:AssignOperation.To>
-                            <OutArgument x:TypeArguments="x:Int32">[int_header01]</OutArgument>
-                          </ui:AssignOperation.To>
-                          <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:Int32">[Row(arr_str_HeaderDT(0)).ToString]</InArgument>
-                          </ui:AssignOperation.Value>
-                        </ui:AssignOperation>
-                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
-                          <ui:AssignOperation.To>
-                            <OutArgument x:TypeArguments="x:Int32">[int_header02]</OutArgument>
-                          </ui:AssignOperation.To>
-                          <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:Int32">[Row(arr_str_HeaderDT(1)).ToString]</InArgument>
-                          </ui:AssignOperation.Value>
-                        </ui:AssignOperation>
-                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
-                          <ui:AssignOperation.To>
-                            <OutArgument x:TypeArguments="x:Int32">[int_header03]</OutArgument>
-                          </ui:AssignOperation.To>
-                          <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:Int32">[Row(arr_str_HeaderDT(2)).ToString]</InArgument>
-                          </ui:AssignOperation.Value>
-                        </ui:AssignOperation>
-                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
-                          <ui:AssignOperation.To>
-                            <OutArgument x:TypeArguments="x:Int32">[int_header04]</OutArgument>
-                          </ui:AssignOperation.To>
-                          <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:Int32">[Row(arr_str_HeaderDT(3)).ToString]</InArgument>
-                          </ui:AssignOperation.Value>
-                        </ui:AssignOperation>
-                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
-                          <ui:AssignOperation.To>
-                            <OutArgument x:TypeArguments="x:Int32">[int_header05]</OutArgument>
-                          </ui:AssignOperation.To>
-                          <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:Int32">[Row(arr_str_HeaderDT(4)).ToString]</InArgument>
-                          </ui:AssignOperation.Value>
-                        </ui:AssignOperation>
-                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
-                          <ui:AssignOperation.To>
-                            <OutArgument x:TypeArguments="x:Int32">[int_header06]</OutArgument>
-                          </ui:AssignOperation.To>
-                          <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:Int32">[Row(arr_str_HeaderDT(5)).ToString]</InArgument>
-                          </ui:AssignOperation.Value>
-                        </ui:AssignOperation>
-                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
-                          <ui:AssignOperation.To>
-                            <OutArgument x:TypeArguments="x:Int32">[int_header07]</OutArgument>
-                          </ui:AssignOperation.To>
-                          <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:Int32">[Row(arr_str_HeaderDT(6)).ToString]</InArgument>
-                          </ui:AssignOperation.Value>
-                        </ui:AssignOperation>
-                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
-                          <ui:AssignOperation.To>
-                            <OutArgument x:TypeArguments="x:Int32">[int_header08]</OutArgument>
-                          </ui:AssignOperation.To>
-                          <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:Int32">[Row(arr_str_HeaderDT(7)).ToString]</InArgument>
-                          </ui:AssignOperation.Value>
-                        </ui:AssignOperation>
-                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
-                          <ui:AssignOperation.To>
-                            <OutArgument x:TypeArguments="x:Int32">[int_header09]</OutArgument>
-                          </ui:AssignOperation.To>
-                          <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:Int32">[Row(arr_str_HeaderDT(8)).ToString]</InArgument>
-                          </ui:AssignOperation.Value>
-                        </ui:AssignOperation>
-                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
-                          <ui:AssignOperation.To>
-                            <OutArgument x:TypeArguments="x:Int32">[int_header10]</OutArgument>
-                          </ui:AssignOperation.To>
-                          <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:Int32">[Row(arr_str_HeaderDT(9)).ToString]</InArgument>
-                          </ui:AssignOperation.Value>
-                        </ui:AssignOperation>
-                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_12">
-                          <ui:AssignOperation.To>
-                            <OutArgument x:TypeArguments="x:Int32">[int_header11]</OutArgument>
-                          </ui:AssignOperation.To>
-                          <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:Int32">[Row(arr_str_HeaderDT(10)).ToString]</InArgument>
-                          </ui:AssignOperation.Value>
-                        </ui:AssignOperation>
-                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_13">
-                          <ui:AssignOperation.To>
-                            <OutArgument x:TypeArguments="x:Int32">[int_header12]</OutArgument>
-                          </ui:AssignOperation.To>
-                          <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:Int32">[Row(arr_str_HeaderDT(11)).ToString]</InArgument>
-                          </ui:AssignOperation.Value>
-                        </ui:AssignOperation>
-                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_14">
-                          <ui:AssignOperation.To>
-                            <OutArgument x:TypeArguments="x:Int32">[int_header13]</OutArgument>
-                          </ui:AssignOperation.To>
-                          <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:Int32">[Row(arr_str_HeaderDT(12)).ToString]</InArgument>
-                          </ui:AssignOperation.Value>
-                        </ui:AssignOperation>
-                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_15">
-                          <ui:AssignOperation.To>
-                            <OutArgument x:TypeArguments="x:Int32">[int_header14]</OutArgument>
-                          </ui:AssignOperation.To>
-                          <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:Int32">[Row(arr_str_HeaderDT(13)).ToString]</InArgument>
-                          </ui:AssignOperation.Value>
-                        </ui:AssignOperation>
-                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_28">
-                          <ui:AssignOperation.To>
-                            <OutArgument x:TypeArguments="x:Int32">[int_header15]</OutArgument>
-                          </ui:AssignOperation.To>
-                          <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:Int32">[Row(arr_str_HeaderDT(14)).ToString]</InArgument>
-                          </ui:AssignOperation.Value>
-                        </ui:AssignOperation>
-                      </scg:List>
-                    </ui:MultipleAssign.AssignOperations>
-                  </ui:MultipleAssign>
+                  <Assign sap:VirtualizedContainerService.HintSize="577,83" sap2010:WorkflowViewState.IdRef="Assign_12">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[data_row]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[String.Join(", ",arr_str_HeaderDT)]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="577,741" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+                    <ui:CommentOut.Body>
+                      <Sequence DisplayName="Ignorierte Aktivitäten" sap:VirtualizedContainerService.HintSize="541,662" sap2010:WorkflowViewState.IdRef="Sequence_39">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,551" sap2010:WorkflowViewState.IdRef="MultipleAssign_7">
+                          <ui:MultipleAssign.AssignOperations>
+                            <scg:List x:TypeArguments="ui:AssignOperation" Capacity="16">
+                              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_29">
+                                <ui:AssignOperation.To>
+                                  <OutArgument x:TypeArguments="x:Int32">[int_header01]</OutArgument>
+                                </ui:AssignOperation.To>
+                                <ui:AssignOperation.Value>
+                                  <InArgument x:TypeArguments="x:Int32">[Row(arr_str_HeaderDT(0)).ToString]</InArgument>
+                                </ui:AssignOperation.Value>
+                              </ui:AssignOperation>
+                              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_30">
+                                <ui:AssignOperation.To>
+                                  <OutArgument x:TypeArguments="x:Int32">[int_header02]</OutArgument>
+                                </ui:AssignOperation.To>
+                                <ui:AssignOperation.Value>
+                                  <InArgument x:TypeArguments="x:Int32">[Row(arr_str_HeaderDT(1)).ToString]</InArgument>
+                                </ui:AssignOperation.Value>
+                              </ui:AssignOperation>
+                              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_31">
+                                <ui:AssignOperation.To>
+                                  <OutArgument x:TypeArguments="x:Int32">[int_header03]</OutArgument>
+                                </ui:AssignOperation.To>
+                                <ui:AssignOperation.Value>
+                                  <InArgument x:TypeArguments="x:Int32">[Row(arr_str_HeaderDT(2)).ToString]</InArgument>
+                                </ui:AssignOperation.Value>
+                              </ui:AssignOperation>
+                              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_32">
+                                <ui:AssignOperation.To>
+                                  <OutArgument x:TypeArguments="x:Int32">[int_header04]</OutArgument>
+                                </ui:AssignOperation.To>
+                                <ui:AssignOperation.Value>
+                                  <InArgument x:TypeArguments="x:Int32">[Row(arr_str_HeaderDT(3)).ToString]</InArgument>
+                                </ui:AssignOperation.Value>
+                              </ui:AssignOperation>
+                              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_33">
+                                <ui:AssignOperation.To>
+                                  <OutArgument x:TypeArguments="x:Int32">[int_header05]</OutArgument>
+                                </ui:AssignOperation.To>
+                                <ui:AssignOperation.Value>
+                                  <InArgument x:TypeArguments="x:Int32">[Row(arr_str_HeaderDT(4)).ToString]</InArgument>
+                                </ui:AssignOperation.Value>
+                              </ui:AssignOperation>
+                              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_34">
+                                <ui:AssignOperation.To>
+                                  <OutArgument x:TypeArguments="x:Int32">[int_header06]</OutArgument>
+                                </ui:AssignOperation.To>
+                                <ui:AssignOperation.Value>
+                                  <InArgument x:TypeArguments="x:Int32">[Row(arr_str_HeaderDT(5)).ToString]</InArgument>
+                                </ui:AssignOperation.Value>
+                              </ui:AssignOperation>
+                              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_35">
+                                <ui:AssignOperation.To>
+                                  <OutArgument x:TypeArguments="x:Int32">[int_header07]</OutArgument>
+                                </ui:AssignOperation.To>
+                                <ui:AssignOperation.Value>
+                                  <InArgument x:TypeArguments="x:Int32">[Row(arr_str_HeaderDT(6)).ToString]</InArgument>
+                                </ui:AssignOperation.Value>
+                              </ui:AssignOperation>
+                              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_36">
+                                <ui:AssignOperation.To>
+                                  <OutArgument x:TypeArguments="x:Int32">[int_header08]</OutArgument>
+                                </ui:AssignOperation.To>
+                                <ui:AssignOperation.Value>
+                                  <InArgument x:TypeArguments="x:Int32">[Row(arr_str_HeaderDT(7)).ToString]</InArgument>
+                                </ui:AssignOperation.Value>
+                              </ui:AssignOperation>
+                              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_37">
+                                <ui:AssignOperation.To>
+                                  <OutArgument x:TypeArguments="x:Int32">[int_header09]</OutArgument>
+                                </ui:AssignOperation.To>
+                                <ui:AssignOperation.Value>
+                                  <InArgument x:TypeArguments="x:Int32">[Row(arr_str_HeaderDT(8)).ToString]</InArgument>
+                                </ui:AssignOperation.Value>
+                              </ui:AssignOperation>
+                              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_38">
+                                <ui:AssignOperation.To>
+                                  <OutArgument x:TypeArguments="x:Int32">[int_header10]</OutArgument>
+                                </ui:AssignOperation.To>
+                                <ui:AssignOperation.Value>
+                                  <InArgument x:TypeArguments="x:Int32">[Row(arr_str_HeaderDT(9)).ToString]</InArgument>
+                                </ui:AssignOperation.Value>
+                              </ui:AssignOperation>
+                              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_39">
+                                <ui:AssignOperation.To>
+                                  <OutArgument x:TypeArguments="x:Int32">[int_header11]</OutArgument>
+                                </ui:AssignOperation.To>
+                                <ui:AssignOperation.Value>
+                                  <InArgument x:TypeArguments="x:Int32">[Row(arr_str_HeaderDT(10)).ToString]</InArgument>
+                                </ui:AssignOperation.Value>
+                              </ui:AssignOperation>
+                              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_40">
+                                <ui:AssignOperation.To>
+                                  <OutArgument x:TypeArguments="x:Int32">[int_header12]</OutArgument>
+                                </ui:AssignOperation.To>
+                                <ui:AssignOperation.Value>
+                                  <InArgument x:TypeArguments="x:Int32">[Row(arr_str_HeaderDT(11)).ToString]</InArgument>
+                                </ui:AssignOperation.Value>
+                              </ui:AssignOperation>
+                              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_41">
+                                <ui:AssignOperation.To>
+                                  <OutArgument x:TypeArguments="x:Int32">[int_header13]</OutArgument>
+                                </ui:AssignOperation.To>
+                                <ui:AssignOperation.Value>
+                                  <InArgument x:TypeArguments="x:Int32">[Row(arr_str_HeaderDT(12)).ToString]</InArgument>
+                                </ui:AssignOperation.Value>
+                              </ui:AssignOperation>
+                              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_42">
+                                <ui:AssignOperation.To>
+                                  <OutArgument x:TypeArguments="x:Int32">[int_header14]</OutArgument>
+                                </ui:AssignOperation.To>
+                                <ui:AssignOperation.Value>
+                                  <InArgument x:TypeArguments="x:Int32">[Row(arr_str_HeaderDT(13)).ToString]</InArgument>
+                                </ui:AssignOperation.Value>
+                              </ui:AssignOperation>
+                              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_43">
+                                <ui:AssignOperation.To>
+                                  <OutArgument x:TypeArguments="x:Int32">[int_header15]</OutArgument>
+                                </ui:AssignOperation.To>
+                                <ui:AssignOperation.Value>
+                                  <InArgument x:TypeArguments="x:Int32">[Row(arr_str_HeaderDT(14)).ToString]</InArgument>
+                                </ui:AssignOperation.Value>
+                              </ui:AssignOperation>
+                            </scg:List>
+                          </ui:MultipleAssign.AssignOperations>
+                        </ui:MultipleAssign>
+                      </Sequence>
+                    </ui:CommentOut.Body>
+                  </ui:CommentOut>
+                  <Assign sap:VirtualizedContainerService.HintSize="577,83" sap2010:WorkflowViewState.IdRef="Assign_13">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[data_row]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[int_header01 +", "+""""+ int_header02 +""""+", "+ int_header03 +", "+ int_header04 +", "+ int_header05 +", "+ int_header06 +", "+ int_header07 +", "+ int_header08 +", "+ int_header09 +", "+ int_header10 +", "+ int_header11 +", "+ int_header12 +", "+ int_header13 +", "+ int_header14]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="577,86" sap2010:WorkflowViewState.IdRef="MessageBox_9" Text="[str_SQLQuery]" />
+                  <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="577,86" sap2010:WorkflowViewState.IdRef="MessageBox_10" Text="[data_row]" />
+                  <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="577,86" sap2010:WorkflowViewState.IdRef="MessageBox_11" Text="[str_SQLQuery + data_row + &quot;)&quot;]" />
                 </Sequence>
-              </ui:CommentOut.Body>
-            </ui:CommentOut>
-            <Assign sap:VirtualizedContainerService.HintSize="577,82" sap2010:WorkflowViewState.IdRef="Assign_2">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:String">[data_row]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:String">[int_header01 +", "+""""+ int_header02 +""""+", "+ int_header03 +", "+ int_header04 +", "+ int_header05 +", "+ int_header06 +", "+ int_header07 +", "+ int_header08 +", "+ int_header09 +", "+ int_header10 +", "+ int_header11 +", "+ int_header12 +", "+ int_header13 +", "+ int_header14]</InArgument>
-              </Assign.Value>
-            </Assign>
-            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="577,85" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[str_SQLQuery]" />
-            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="577,85" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[data_row]" />
-            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="577,85" sap2010:WorkflowViewState.IdRef="MessageBox_5" Text="[str_SQLQuery + data_row + &quot;)&quot;]" />
-          </Sequence>
-        </ActivityAction>
-      </ui:ForEachRow.Body>
-    </ui:ForEachRow>
+              </ActivityAction>
+            </ui:ForEachRow.Body>
+          </ui:ForEachRow>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
   </Sequence>
 </Activity>
